@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const worldPopulation = 7900;
+
+    function percentageOfWorld1(population) {
+        return (population / worldPopulation) * 100;
+      }
+      
+      const chinaPercentage1 = percentageOfWorld1(1441);
+      const usaPercentage1 = percentageOfWorld1(331);
+      const indonesiaPercentage1 = percentageOfWorld1(273);
+      const tanzaniaPercentage1 = percentageOfWorld1(600);
+      console.log(`China represents ${chinaPercentage1.toFixed(2)}% of the world population (using function declaration).`);
+      console.log(`USA represents ${usaPercentage1.toFixed(2)}% of the world population (using function declaration).`);
+      console.log(`Indonesia represents ${indonesiaPercentage1.toFixed(2)}% of the world population (using function declaration).`);
+      console.log(`Tanzania represents ${tanzaniaPercentage1.toFixed(2)}% of the world population (using function declaration).`);
+      
+      console.log('---');
+
+
+       const populations = [1441, 331, 273, 600]; 
+
+console.log(`Does the 'populations' array have 4 elements? ${populations.length === 4}`);
+
+const percentages = [
+  percentageOfWorld1(populations[0]),
+  percentageOfWorld1(populations[1]),
+  percentageOfWorld1(populations[2]),
+  percentageOfWorld1(populations[3]),
+];
+
+console.log(percentages); 
+    </script>
+</body>
+</html>

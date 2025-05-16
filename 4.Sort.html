@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sort Three Numbers</title>
+<style>
+  .container {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  .input-section, .output-section {
+    margin-bottom: 20px;
+  }
+  label {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    margin-right: 5px;
+  }
+  input[type="text"] {
+    width: 80px;
+    margin-right: 10px;
+  }
+  button {
+    padding: 8px 15px;
+    margin-right: 10px;
+  }
+  .output-box {
+    display: inline-block;
+    width: 80px;
+    border: 1px solid #eee;
+    padding: 8px;
+    text-align: center;
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="input-section">
+      <h3>Input Section</h3>
+      <p>Enter a number in each of the boxes below and then click one of the buttons below to either sort the numbers into ascending order, or descending order. The sorted numbers will be placed in the output section.</p>
+      <div>
+        <label for="numA">A</label><input type="text" id="numA">
+        <label for="numB">B</label><input type="text" id="numB">
+        <label for="numC">C</label><input type="text" id="numC">
+      </div>
+      <button onclick="sortNumbers('asc')">Sort in Ascending Order</button>
+      <button onclick="sortNumbers('desc')">Sort in Descending Order</button>
+    </div>
+
+    <div class="output-section">
+      <h3>Output Section</h3>
+      <p>Once you click on one of the buttons, the numbers in boxes A, B, and C will be sorted accordingly. The sorted numbers will then be placed in the output boxes.</p>
+      <div>
+        <span class="output-box" id="outputA"></span>
+        <span class="output-box" id="outputB"></span>
+        <span class="output-box" id="outputC"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function sortNumbers(order) {
+      const numA = parseFloat(document.getElementById("numA").value);
+      const numB = parseFloat(document.getElementById("numB").value);
+      const numC = parseFloat(document.getElementById("numC").value);
+
+      if (isNaN(numA) || isNaN(numB) || isNaN(numC)) {
+        alert("Please enter valid numbers in all input boxes.");
+        return;
+      }
+
+      const numbers = [numA, numB, numC];
+
+      if (order === 'asc') {
+        numbers.sort((a, b) => a - b);
+      } else if (order === 'desc') {
+        numbers.sort((a, b) => b - a);
+      }
+
+      document.getElementById("outputA").textContent = numbers[0];
+      document.getElementById("outputB").textContent = numbers[1];
+      document.getElementById("outputC").textContent = numbers[2];
+    }
+  </script>
+
+</body>
+</html>

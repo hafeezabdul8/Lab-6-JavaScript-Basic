@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Message</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    .form-container {
+      width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #a19e9ef1;
+      border-radius: 5px;
+      background-color: rgb(174, 179, 179);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error-message {
+      color: red;
+      margin-top: 10px;
+      border: 1px solid red;
+      padding: 10px;
+      border-radius: 3px;
+      background-color: #ffe0e0;
+    }
+    .error-input {
+      border-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Send Message</h2>
+    <form id="messageForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5"></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="errorContainer"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('messageForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const errorContainer = document.getElementById('errorContainer');
+
+    form.addEventListener('submit', submitter);
+
+    function submitter(e) {
+      e.preventDefault(); 
+
+      let errors = [];
+      errorContainer.innerHTML = '';
+      nameInput.classList.remove('error-input');
+      emailInput.classList.remove('error-input');
+      messageInput.classList.remove('error-input');
+
+      if (nameInput.value.trim() === '') {
+        errors.push('Name is required.');
+        nameInput.classList.add('error-input');
+      }
+
+      if (emailInput.value.trim() === '') {
+        errors.push('Email is required.');
+        emailInput.classList.add('error-input');
+      } else if (!isValidEmail(emailInput.value.trim())) {
+        errors.push('Invalid email format.');
+        emailInput.classList.add('error-input');
+      }
+
+      if (messageInput.value.trim() === '') {
+        errors.push('Message is required.');
+        messageInput.classList.add('error-input');
+      }
+
+      if (errors.length > 0) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.innerHTML = errors.map(error => `<p>${error}</p>`).join('');
+        errorContainer.appendChild(errorDiv);
+
+        setTimeout(() => {
+          errorDiv.remove();
+          nameInput.classList.remove('error-input');
+          emailInput.classList.remove('error-input');
+          messageInput.classList.remove('error-input');
+        }, 5000); 
+
+        return; 
+      }
+
+      
+      const formData = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        message: messageInput.value.trim()
+      };
+      console.log('Form Data:', formData);
+
+
+      
+      alert('Message data prepared (not actually sent to Apps Script in this example). Check the console.');
+      form.reset(); 
+    }
+
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const worldPopulation = 7900;
+
+function percentageOfWorld1(population) {
+  return (population / worldPopulation) * 100;
+}
+
+const chinaPercentage1 = percentageOfWorld1(1441);
+const usaPercentage1 = percentageOfWorld1(331);
+const indonesiaPercentage1 = percentageOfWorld1(273);
+
+console.log(`China represents ${chinaPercentage1.toFixed(2)}% of the world population (using function declaration).`);
+console.log(`USA represents ${usaPercentage1.toFixed(2)}% of the world population (using function declaration).`);
+console.log(`Indonesia represents ${indonesiaPercentage1.toFixed(2)}% of the world population (using function declaration).`);
+
+console.log('---');
+
+const percentageOfWorld2 = function (population) {
+  return (population / worldPopulation) * 100;
+};
+
+const chinaPercentage2 = percentageOfWorld2(1441);
+const usaPercentage2 = percentageOfWorld2(331);
+const indonesiaPercentage2 = percentageOfWorld2(273);
+
+console.log(`China represents ${chinaPercentage2.toFixed(3)}% of the world population (using function expression).`);
+console.log(`USA represents ${usaPercentage2.toFixed(2)}% of the world population (using function expression).`);
+console.log(`Indonesia represents ${indonesiaPercentage2.toFixed(2)}% of the world population (using function expression).`);
+
+console.log('---');
+const percentageOfWorld3 = (population) => (population / worldPopulation) * 100;
+
+const chinaPercentage3 = percentageOfWorld3(1441);
+const usaPercentage3 = percentageOfWorld3(331);
+const indonesiaPercentage3 = percentageOfWorld3(273);
+
+console.log(`China represents ${chinaPercentage3.toFixed(2)}% of the world population (using arrow function).`);
+console.log(`USA represents ${usaPercentage3.toFixed(2)}% of the world population (using arrow function).`);
+console.log(`Indonesia represents ${indonesiaPercentage3.toFixed(2)}% of the world population (using arrow function).`);
+    </script>
+</body>
+</html>

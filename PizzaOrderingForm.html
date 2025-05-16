@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZA ORDER FORM</title>
+</head>
+<body>
+    <form action="">
+    <div class="data" style="background-color: darkgray; width:fit-content ;">
+    <fieldset style="width: fit-content;">
+        <legend style="text-align: center;">PIZZA ORDER FORM</legend>
+        <fieldset style="width: fit-content;">
+            <legend style="text-align: left;">Delivery Address</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="name">Full Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+                        <label for="phone">Phone</label><br><br>
+                        <label for="Password">Password:</label>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Full Name"><br><br>
+                        <input type="tel" name="Phone" placeholder="phone"><br><br>
+                        <input type="password" placeholder="Password">
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;<label for="Street Address">Street Address</label>&nbsp;&nbsp;<br><br>
+                        &nbsp;&nbsp;&nbsp;<label for="Email">Email</label><br><br><br><br>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Street Address"><br><br>
+                        <input type="email" placeholder="email"><br><br><br><br>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset style="width: fit-content;">
+            <legend style="text-align: left;">Payment Information</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="card type">Card Type:</label><br><br>
+                        <label for="name">Name on Card:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                    </td>
+                    <td>
+                        <select name="card" id="">
+                            <option value="Visa">Visa</option>
+                            <option value="Master card">Master Card</option>
+                            <option value="discover">Discover</option>
+                        </select><br><br>
+                        <input type="text" placeholder="Name">
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;<label for="card">Card Number</label><br><br><br>
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<input type="Number" name="Card Number" placeholder="Card Number"><br><br><br>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        
+            <fieldset style="width: fit-content;">
+                <legend style="text-align: left;">Customize Your Pizza</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="Pizza Size">Pizza Size:</label><br><br>
+                            <label for="Spices">Spices:</label><br><br>
+                            <label for="Other Requirement">Other Requirement:</label><br><br><br><br>
+                        </td>
+                        <td>
+                            <select name="" id="">
+                                <option value="Large">Large</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Small">Small</option>
+                            </select><br><br>
+                            <label for="">Black pepper</label><input type="checkbox" name="Black pepper" id=""><br><br>
+                            <textarea name="" id="" cols="20" rows="4" placeholder="Any other requirement"></textarea>
+                        </td>
+                        <td>
+                            <label for="">Quantity:</label><br><br>
+                            <label for="">Bell pepper</label><input type="checkbox" name="Bell pepper" id=""><br><br>
+                            <label for="">Meat</label> <input type="radio">
+                            <label for="">Fish</label> <input type="radio"><br><br><br><br>
+                        </td>
+                        <td>
+                            <input type="number"><br><br>
+                            <label for="">mayonnise</label> <input type="checkbox"><br><br>
+                            <label for="">cow</label> <input type="radio">
+                            <label for="">chicken</label> <input type="radio"><br><br><br><br>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Clear order">
+            <input type="submit" value="Place order">
+    </fieldset>
+</div>
+</form>
+<script>
+
+function validatePizzaOrder() {
+  let errorMessage = "";
+
+  const fullName = document.querySelector('input[name="Full Name"]');
+  const streetAddress = document.querySelector('input[name="Stree Address"]');
+  const phone = document.querySelector('input[name="Phone"]');
+  const email = document.querySelector('input[name="Email"]');
+  const password = document.querySelector('input[name="Password"]');
+  const cardNumber = document.querySelector('input[name="Card Number"]');
+  const nameOnCard = document.querySelector('input[name="Name on Card"]');
+  const pizzaSize = document.querySelector('select[name="Pizza size"]');
+  const quantity = document.querySelector('select[name="Quantity"]');
+  const blackPepper = document.querySelector('input[value="Black pepper"]');
+  const bellPeppers = document.querySelector('input[value="Bell peppers"]');
+  const mayonnaise = document.querySelector('input[value="mayonnaise"]');
+  const meatRadio = document.querySelector('input[value="Meat"]');
+  const fishRadio = document.querySelector('input[value="Fish"]');
+  const cowRadio = document.querySelector('input[value="Cow"]');
+  const chickenRadio = document.querySelector('input[value="Chicken"]');
+
+  if (!fullName.value.trim()) {
+    errorMessage += "Please provide your full name.\n";
+  }
+  if (!streetAddress.value.trim()) {
+    errorMessage += "Please provide your street address.\n";
+  }
+  if (!phone.value.trim()) {
+    errorMessage += "Please provide your phone number.\n";
+  }
+  if (!email.value.trim()) {
+    errorMessage += "Please provide your email address.\n";
+  }
+  if (!password.value.trim()) {
+    errorMessage += "Please provide your password.\n";
+  }
+  if (!cardNumber.value.trim()) {
+    errorMessage += "Please provide your card number.\n";
+  }
+  if (!nameOnCard.value.trim()) {
+    errorMessage += "Please provide the name on the card.\n";
+  }
+  if (pizzaSize.value === "") {
+    errorMessage += "Please select a pizza size.\n";
+  }
+  if (quantity.value === "") {
+    errorMessage += "Please select the quantity of pizza.\n";
+  }
+  if (!blackPepper.checked && !bellPeppers.checked && !mayonnaise.checked) {
+    errorMessage += "Please select at least one spice.\n";
+  }
+  if (!meatRadio.checked && !fishRadio.checked && !cowRadio.checked && !chickenRadio.checked) {
+    errorMessage += "Please select your preferred meat option.\n";
+  }
+
+  if (errorMessage) {
+    alert("Please correct the following errors:\n" + errorMessage);
+    return false; 
+  }
+
+  alert("Order placed successfully!"); 
+  return true; 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const placeOrderButton = document.querySelector('input[value="Place Order"]');
+  if (placeOrderButton) {
+    placeOrderButton.onclick = validatePizzaOrder;
+  }
+});
+
+
+</script>
+</body>
+</html>
